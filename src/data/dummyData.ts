@@ -3,23 +3,82 @@ import { User, Task, Project, TimeoffRequest, Expense } from '../types';
 export const testUsers: User[] = [
   {
     id: '1',
-    email: 'employee@test.com',
+    email: 'johnsmith@test.com',
     role: 'Employee',
     name: 'John Smith'
   },
   {
     id: '2',
-    email: 'manager@test.com',
+    email: 'sarah@test.com',
     role: 'Manager',
     name: 'Sarah Johnson'
   },
   {
     id: '3',
-    email: 'hr@test.com',
+    email: 'wilson@test.com',
     role: 'HR',
     name: 'Mike Wilson'
+  },
+
+  // extra dummy employees
+  {
+    id: '4',
+    email: 'alice@test.com',
+    role: 'Employee',
+    name: 'Alice Brown'
+  },
+  {
+    id: '5',
+    email: 'bob@test.com',
+    role: 'Employee',
+    name: 'Bob Martin'
+  },
+  {
+    id: '6',
+    email: 'charlie@test.com',
+    role: 'Employee',
+    name: 'Charlie Davis'
+  },
+  {
+    id: '7',
+    email: 'diana@test.com',
+    role: 'Employee',
+    name: 'Diana Miller'
+  },
+  {
+    id: '8',
+    email: 'edward@test.com',
+    role: 'Employee',
+    name: 'Edward Johnson'
+  },
+  {
+    id: '9',
+    email: 'fiona@test.com',
+    role: 'Employee',
+    name: 'Fiona Clark'
   }
 ];
+
+// export const testUsers: User[] = [
+//   {
+//     id: '1',
+//     email: 'employee@test.com',
+//     role: 'Employee',
+//     name: 'John Smith'
+//   },
+//   {
+//     id: '2',
+//     email: 'manager@test.com',
+//     role: 'Manager',
+//     name: 'Sarah Johnson'
+//   },
+//   {
+//     id: '3',
+//     email: 'hr@test.com',
+//     role: 'HR',
+//     name: 'Mike Wilson'
+//   }
+// ];
 
 export const dummyTasks: Task[] = [
   {
