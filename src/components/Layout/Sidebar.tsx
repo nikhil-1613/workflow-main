@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FiHome, FiClock, FiDollarSign, FiCalendar, FiUsers, 
-  FiClipboard, FiTarget, FiBarChart , FiX 
+  FiClipboard, FiTarget, FiBarChart, FiX, FiUser, FiBriefcase
 } from 'react-icons/fi';
 import { useAuth } from '../../contexts/AuthContext';
-import { useTheme } from '../../contexts/ThemeContext'; // <-- import theme
+import { useTheme } from '../../contexts/ThemeContext'; 
 
 interface SidebarProps {
   isOpen: boolean;
@@ -33,7 +33,7 @@ const menuItems: MenuItem[] = [
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const { user } = useAuth();
-  const { isDarkMode } = useTheme(); // <-- get dark mode state
+  const { isDarkMode } = useTheme();
 
   const filteredMenuItems = menuItems.filter(item => 
     user && item.roles.includes(user.role)
@@ -72,7 +72,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         <div className="flex items-center justify-between p-6 border-b border-gray-700">
           <div>
             <h2 className="font-bold text-lg">WorkForce</h2>
-            <p className={isDarkMode ? 'text-gray-400' : 'text-gray-500'}>{user?.role}</p>
+            <div className="flex items-center gap-2 mt-1">
+              <FiBriefcase className="text-indigo-500" />
+              <p className={isDarkMode ? 'text-gray-400' : 'text-gray-500'}>
+                {user?.role}
+              </p>
+            </div>
           </div>
           {!isDesktop && (
             <button onClick={onClose} className={isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-black'}>
@@ -109,9 +114,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
         {/* Footer */}
         <div className="p-6 border-t border-gray-700">
-          <div className={isDarkMode ? 'text-gray-400 text-sm' : 'text-gray-600 text-sm'}>
-            <p>Logged in as</p>
-            <p className={isDarkMode ? 'text-white font-medium' : 'font-medium'}>{user?.name}</p>
+          <div className="flex items-center gap-2">
+            <FiUser className={isDarkMode ? 'text-white' : 'text-black'} size={30}/>
+            <div className={isDarkMode ? 'text-gray-400 text-sm' : 'text-gray-600 text-sm'}>
+              <p>Logged in as</p>
+              <p className={isDarkMode ? 'text-white font-medium' : 'font-medium'}>
+                {user?.name}
+              </p>
+            </div>
           </div>
         </div>
       </motion.aside>
@@ -127,6 +137,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 //   FiClipboard, FiTarget, FiBarChart , FiX 
 // } from 'react-icons/fi';
 // import { useAuth } from '../../contexts/AuthContext';
+// import { useTheme } from '../../contexts/ThemeContext'; 
 
 // interface SidebarProps {
 //   isOpen: boolean;
@@ -153,35 +164,24 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
 // export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 //   const { user } = useAuth();
+//   const { isDarkMode } = useTheme(); // <-- get dark mode state
 
 //   const filteredMenuItems = menuItems.filter(item => 
 //     user && item.roles.includes(user.role)
 //   );
 
 //   const sidebarVariants = {
-//     open: {
-//       x: 0,
-//       transition: {
-//         type: "spring",
-//         stiffness: 300,
-//         damping: 30
-//       }
-//     },
-//     closed: {
-//       x: "-100%",
-//       transition: {
-//         type: "spring",
-//         stiffness: 300,
-//         damping: 30
-//       }
-//     }
+//     open: { x: 0, transition: { type: "spring", stiffness: 300, damping: 30 } },
+//     closed: { x: "-100%", transition: { type: "spring", stiffness: 300, damping: 30 } }
 //   };
+
+//   const isDesktop = window.innerWidth >= 768;
 
 //   return (
 //     <>
 //       {/* Mobile overlay */}
 //       <AnimatePresence>
-//         {isOpen && (
+//         {isOpen && !isDesktop && (
 //           <motion.div
 //             initial={{ opacity: 0 }}
 //             animate={{ opacity: 1 }}
@@ -195,21 +195,21 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 //       {/* Sidebar */}
 //       <motion.aside
 //         variants={sidebarVariants}
-//         animate={isOpen ? "open" : "closed"}
-//         className="fixed md:static top-0 left-0 h-full w-64 bg-gray-900 dark:bg-gray-900 border-r border-gray-700 z-50 flex flex-col"
+//         animate={isOpen || isDesktop ? "open" : "closed"}
+//         className={`fixed md:static top-0 left-0 h-full w-64 border-r border-gray-700 z-50 flex flex-col
+//           ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
 //       >
 //         {/* Header */}
 //         <div className="flex items-center justify-between p-6 border-b border-gray-700">
 //           <div>
-//             <h2 className="text-white font-bold text-lg">WorkForce</h2>
-//             <p className="text-gray-400 text-sm">{user?.role}</p>
+//             <h2 className="font-bold text-lg">WorkForce</h2>
+//             <p className={isDarkMode ? 'text-gray-400' : 'text-gray-500'}>{user?.role}</p>
 //           </div>
-//           <button
-//             onClick={onClose}
-//             className="md:hidden text-gray-400 hover:text-white"
-//           >
-//             <FiX size={20} />
-//           </button>
+//           {!isDesktop && (
+//             <button onClick={onClose} className={isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-black'}>
+//               <FiX size={20} />
+//             </button>
+//           )}
 //         </div>
 
 //         {/* Navigation */}
@@ -220,12 +220,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 //               <NavLink
 //                 key={item.path}
 //                 to={item.path}
-//                 onClick={() => window.innerWidth < 768 && onClose()}
+//                 onClick={() => !isDesktop && onClose()}
 //                 className={({ isActive }) =>
 //                   `flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
 //                     isActive
 //                       ? 'bg-indigo-600 text-white'
-//                       : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+//                       : isDarkMode
+//                         ? 'text-gray-300 hover:bg-gray-800 hover:text-white'
+//                         : 'text-gray-700 hover:bg-gray-100'
 //                   }`
 //                 }
 //               >
@@ -238,9 +240,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
 //         {/* Footer */}
 //         <div className="p-6 border-t border-gray-700">
-//           <div className="text-gray-400 text-sm">
+//           <div className={isDarkMode ? 'text-gray-400 text-sm' : 'text-gray-600 text-sm'}>
 //             <p>Logged in as</p>
-//             <p className="text-white font-medium">{user?.name}</p>
+//             <p className={isDarkMode ? 'text-white font-medium' : 'font-medium'}>{user?.name}</p>
 //           </div>
 //         </div>
 //       </motion.aside>
