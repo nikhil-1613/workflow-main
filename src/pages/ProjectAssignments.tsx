@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FiPlus } from 'react-icons/fi';
 import { useAuth } from '../contexts/AuthContext';
 import { dummyProjects } from '../data/dummyData';
-import { Modal } from '../components/Modal'; 
+import { Modal } from './Modal'; 
 
 interface Project {
   id: string;

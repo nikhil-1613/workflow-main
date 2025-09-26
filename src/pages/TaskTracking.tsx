@@ -4,7 +4,7 @@ import { FiTarget, FiPlus, FiCheck, FiTrash } from "react-icons/fi";
 import { useAuth } from "../contexts/AuthContext";
 import { dummyTasks, testUsers } from "../data/dummyData";
 import { toast, Toaster } from "react-hot-toast";
-import { Modal } from "../components/Modal"; // ✅ Reusable Modal
+import { Modal } from "./Modal"; // ✅ Reusable Modal
 
 interface Task {
   id: string;
