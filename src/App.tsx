@@ -15,6 +15,7 @@ import { ProjectAssignments } from "./pages/ProjectAssignments";
 import { TaskTracking } from "./pages/TaskTracking";
 import { NotAuthorized } from "./pages/NotAuthorized";
 import { Toaster } from "react-hot-toast"; // ✅ Import toaster
+import Announcments from "./pages/Announcments";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
                 />
                 <Route path="project-assignments" element={<ProjectAssignments />} />
                 <Route path="task-tracking" element={<TaskTracking />} />
+                 <Route path="announcements" element={<Announcments />} />
               </Route>
             </Routes>
 

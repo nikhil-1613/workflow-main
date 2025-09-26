@@ -5,6 +5,7 @@ import {
   FiHome, FiClock, FiDollarSign, FiCalendar, FiUsers, 
   FiClipboard, FiTarget, FiBarChart, FiX, FiUser, FiBriefcase
 } from 'react-icons/fi';
+import { TfiAnnouncement } from "react-icons/tfi";
 import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext'; 
 
@@ -29,6 +30,7 @@ const menuItems: MenuItem[] = [
   { path: '/substitute-management', label: 'Substitute Management', icon: FiUsers, roles: ['Manager', 'HR'] },
   { path: '/project-assignments', label: 'Project Assignments', icon: FiClipboard, roles: ['Employee', 'Manager', 'HR'] },
   { path: '/task-tracking', label: 'Task Tracking', icon: FiTarget, roles: ['Employee', 'Manager', 'HR'] },
+  { path: '/announcements', label: 'Announcements', icon: TfiAnnouncement, roles: ['Employee', 'Manager', 'HR'] } // Fixed label
 ];
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
