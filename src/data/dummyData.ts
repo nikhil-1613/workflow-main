@@ -59,26 +59,7 @@ export const testUsers: User[] = [
   }
 ];
 
-// export const testUsers: User[] = [
-//   {
-//     id: '1',
-//     email: 'employee@test.com',
-//     role: 'Employee',
-//     name: 'John Smith'
-//   },
-//   {
-//     id: '2',
-//     email: 'manager@test.com',
-//     role: 'Manager',
-//     name: 'Sarah Johnson'
-//   },
-//   {
-//     id: '3',
-//     email: 'hr@test.com',
-//     role: 'HR',
-//     name: 'Mike Wilson'
-//   }
-// ];
+
 
 export const dummyTasks: Task[] = [
   {
@@ -182,6 +163,50 @@ export const dummyExpenses: Expense[] = [
     description: 'Laptop accessories and stationery',
     status: 'approved'
   }
+];
+export const dummyTimesheets = [
+  {
+    id: '1',
+    date: '2024-01-02',
+    task: 'Complete Q4 Report',
+    hours: 6,
+    status: 'Approved',
+  },
+  {
+    id: '2',
+    date: '2024-01-03',
+    task: 'Update Client Database',
+    hours: 4,
+    status: 'Pending',
+  },
+  {
+    id: '3',
+    date: '2024-01-04',
+    task: 'Team Performance Review',
+    hours: 7,
+    status: 'Approved',
+  },
+  {
+    id: '4',
+    date: '2024-01-05',
+    task: 'Project Planning Meeting',
+    hours: 5,
+    status: 'Pending',
+  },
+  {
+    id: '5',
+    date: '2024-01-06',
+    task: 'Bug Fixing',
+    hours: 8,
+    status: 'Approved',
+  },
+  {
+    id: '6',
+    date: '2024-01-07',
+    task: 'Client Presentation Preparation',
+    hours: 6,
+    status: 'Pending',
+  },
 ];
 
 export const dashboardKPIs = {

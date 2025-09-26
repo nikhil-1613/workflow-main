@@ -82,7 +82,7 @@ export const Expenses: React.FC = () => {
 
   return (
     <div className="space-y-6 p-6">
-      <Toaster />
+      <Toaster position="top-right" />
       <div className="flex flex-col md:flex-row md:items-center md:justify-between">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
@@ -91,7 +91,7 @@ export const Expenses: React.FC = () => {
         >
           Expenses
         </motion.h1>
-        <motion.button
+        {/* <motion.button
           onClick={handleAddExpense}
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -101,7 +101,7 @@ export const Expenses: React.FC = () => {
         >
           <FiPlus size={18} />
           <span>Add Expense</span>
-        </motion.button>
+        </motion.button> */}
       </div>
 
       {/* Summary Cards */}
@@ -138,6 +138,54 @@ export const Expenses: React.FC = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Quick Add Form */}
+      <motion.div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 mt-6">
+        <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">Quick Add Expense</h3>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Category</label>
+            <select
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white"
+              value={newCategory}
+              onChange={(e) => setNewCategory(e.target.value)}
+            >
+              <option>Travel</option>
+              <option>Office Supplies</option>
+              <option>Meals</option>
+              <option>Equipment</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Amount</label>
+            <input
+              type="number"
+              value={newAmount}
+              onChange={(e) => setNewAmount(e.target.value)}
+              placeholder="0.00"
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Description</label>
+            <input
+              type="text"
+              value={newDescription}
+              onChange={(e) => setNewDescription(e.target.value)}
+              placeholder="Brief description"
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          <div className="flex items-end">
+            <button
+              onClick={handleAddExpense}
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-lg font-medium transition-colors"
+            >
+              Add Expense
+            </button>
+          </div>
+        </div>
+      </motion.div>
 
       {/* Expenses Table */}
       <motion.div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-x-auto">
@@ -231,53 +279,6 @@ export const Expenses: React.FC = () => {
         </table>
       </motion.div>
 
-      {/* Quick Add Form */}
-      <motion.div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 mt-6">
-        <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">Quick Add Expense</h3>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Category</label>
-            <select
-              className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white"
-              value={newCategory}
-              onChange={(e) => setNewCategory(e.target.value)}
-            >
-              <option>Travel</option>
-              <option>Office Supplies</option>
-              <option>Meals</option>
-              <option>Equipment</option>
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Amount</label>
-            <input
-              type="number"
-              value={newAmount}
-              onChange={(e) => setNewAmount(e.target.value)}
-              placeholder="0.00"
-              className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Description</label>
-            <input
-              type="text"
-              value={newDescription}
-              onChange={(e) => setNewDescription(e.target.value)}
-              placeholder="Brief description"
-              className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white"
-            />
-          </div>
-          <div className="flex items-end">
-            <button
-              onClick={handleAddExpense}
-              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-lg font-medium transition-colors"
-            >
-              Add Expense
-            </button>
-          </div>
-        </div>
-      </motion.div>
     </div>
   );
 };
